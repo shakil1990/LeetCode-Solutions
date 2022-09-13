@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int count(vector<vector<int>>& v,int i,int j){
+        if(i<0 || j<0)
+            return 0;
+        if(v[i][j] >= 0)
+            return 0;
+        int k1,k2,k3;
+        k1 = count(v,i-1,j);
+        k2 = count(v,i,j-1);
+        k3 = count(v,i-1,j-1);
+        v[i][j] = 0;
+        return 1+k1+k2+k3;
+    }
+    
+    int countNegatives(vector<vector<int>>& grid) {
+        int n = grid.size()-1;
+        int m = grid[0].size()-1;
+        
+        int k = count(grid,n,m);
+        return k;
+    }
+};

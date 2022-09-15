@@ -1,0 +1,55 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int i,j;
+        map<int,int>mp;
+        
+        if(nums.size()==1){
+            if(nums[0]==target)
+                return 0;
+            else return -1;
+        }
+        
+
+        for(i=0; i<nums.size(); i++){
+            mp[nums[i]] = i;
+        }
+
+        int f = 0;
+
+        for(i=0; i<nums.size()-1; i++){
+            if(nums[i] > nums[i+1]){
+                i++;
+                f = 1;
+                break;
+            }
+        }
+
+        vector<int>v;
+        if(f==1){
+            for(j=i; j<nums.size(); j++){
+                 v.push_back(nums[j]);
+            }
+            for(j=0; j<i; j++){
+                v.push_back(nums[j]);
+            }
+        }else{
+            for(i=0; i<nums.size(); i++){
+                v.push_back(nums[i]);
+            }
+        }
+        int lo = 0, hi = v.size()-1,mid;
+
+        while(lo <= hi){
+            mid = (lo+hi)/2;
+            if(v[mid] == target)
+                return mp[v[mid]];
+            else if(v[mid] > target){
+                hi = mid - 1;
+            }else{
+                lo = mid + 1;
+            }
+        }
+        return -1;
+   }
+};

@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minGroups(vector<vector<int>>& a) {
+        int i,j,n=1000004;
+        vector<int>v(n,0);
+        for(auto i:a){
+            v[i[0]]++;
+            v[i[1]+1]--;
+        }
+        
+        for(i=1; i<n; i++)
+            v[i] += v[i-1];
+        
+        int ans = 0;
+        for(auto i: v){
+            ans = max(ans,i);
+        }
+        return ans;
+    }
+};

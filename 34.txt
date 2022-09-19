@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int l,r;
+        vector<int>ans;
+        
+        l = lower_bound(nums.begin(),nums.end(),target) - nums.begin();
+        r = upper_bound(nums.begin(),nums.end(),target) - nums.begin();
+        
+        if(l==r){ //value doesn't exist
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans;
+        }
+        r--;
+        
+        ans.push_back(l);
+        ans.push_back(r);
+        return ans;
+    }
+};

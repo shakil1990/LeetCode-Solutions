@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int concatenatedBinary(int n) {
+        
+        long long ans = 1;
+        
+        for(int i=2; i<=n; i++){
+            
+            int k =(int)log2(i)+1;
+            
+            long long m = 1;
+            
+            while(k--){
+                
+                m=(m*2)%1000000007;
+                
+            }
+            
+            ans = ((ans*m)%1000000007 + i)%1000000007;
+            
+        }
+        
+        return ans;
+    }
+};

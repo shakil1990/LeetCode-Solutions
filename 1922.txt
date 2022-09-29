@@ -1,0 +1,26 @@
+class Solution {
+public:
+    long long M = 1000000007;
+    long long bigmod(long long n,long long m){
+        long long s,x;
+        if(m==0)return 1;
+        if(m==1)return n;
+        
+        x = bigmod(n,m/2)%M;
+        s = (x*x) % M;
+        if(m%2==1){
+            s = (s*n)%M;
+        }
+        return s;
+    }
+    
+    int countGoodNumbers(long long n) {
+        long long odd, even;
+        odd = n/2;
+        even = n/2;
+        if(n%2)even++;
+        long long ans = (bigmod(5,even) * bigmod(4,odd)) % M;
+        int res = ans;
+        return ans;
+    }
+};

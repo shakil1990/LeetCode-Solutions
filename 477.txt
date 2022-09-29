@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int totalHammingDistance(vector<int>& nums) {
+    
+    int ans = 0;
+        
+    for(int mask = 0; mask < 32; mask++){// using this loop, we can check how many number has certain(mask'th)                                            //bit set
+        
+        int cnt1 = 0, cnt2 = 0;
+        
+        for(int i = 0; i<nums.size(); i++){
+            
+            if(nums[i] & (1 << mask)){
+                
+                cnt1++; // this is the number of ones in all numbers
+                
+            }else cnt2++; // this is the number of zeros in all numbers
+        }
+        
+        ans += (cnt1*cnt2);
+    }    
+    
+    return ans;
+        
+    }
+};

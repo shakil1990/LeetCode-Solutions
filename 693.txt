@@ -1,0 +1,62 @@
+class Solution {
+public:
+    bool hasAlternatingBits(int n) {
+        
+        int mask;
+        
+        bool f = true;
+        
+        int k = n,c = 0;
+        
+        while(k){
+            c++;//finding size of binary representation of n
+            k/=2;
+        }
+        
+        
+        for(mask = 0; mask <= c; mask++){ // checking for even position
+            
+            if(mask%2==0){
+                
+                if(!(n & (1 << mask))){
+                    
+                    f = false;
+                    
+                }
+            }else{
+                
+                if(n & (1 << mask)){
+                    
+                    f = false;
+                    
+                }   
+            }    
+        }
+        if(f)return true;
+        
+        f = true;
+        
+        for(mask = 0; mask <= c; mask++){//checking for odd position
+            
+            if(mask%2==1){
+                
+                if(!(n & (1 << mask))){
+                    
+                    f = false;
+                    
+                }
+            }else{
+                
+                if(n & (1 << mask)){
+                    
+                    f = false;
+                    
+                }   
+            }    
+        }
+        
+        if(f)return true;
+        
+        return false;
+    }
+};

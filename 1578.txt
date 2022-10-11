@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minCost(string colors, vector<int>& nt) {
+        int i,j,sum = 0,mn;
+        int n = colors.size();
+        int ans = 0 ;
+        for(i=0; i<n-1; i++){
+            if(colors[i]==colors[i+1]){
+                mn = nt[i];
+                sum = nt[i];
+                while(colors[i]==colors[i+1] && i < n-1){
+                    sum += nt[i+1];
+                    mn = max(mn,nt[i+1]);
+                    i++;
+                }i--;
+                ans += (sum-mn);
+                //cout << ans << endl;
+            }
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string breakPalindrome(string p) {
+        string s;
+        if(p.size()==1)return s;
+        s = p;
+        int i,n = p.size()/2;
+        bool f = false;
+        for(i=0; i<n; i++){
+            if(s[i]!= 'a'){
+                s[i] = 'a';
+                f = true;
+                break;
+            } 
+        }
+        if(f)return s;
+        for(i=s.size()-1; i>=n; i--){
+            if(s[i]=='a')
+            {
+                s[i] = 'b';
+                break;
+            }
+        }
+        return s;
+    }
+};

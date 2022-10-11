@@ -1,0 +1,12 @@
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        int f = INT_MAX, s = INT_MAX;
+        for(auto n: nums){
+            if(n > s && s > f)return true;
+            else if(n < f) f = n;
+            else if(n > f) s = n;
+        }
+        return false;
+    }
+};

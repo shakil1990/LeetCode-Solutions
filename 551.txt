@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool checkRecord(string s) {
+        int i, n = s.size();
+        int a = 0;
+        bool late = false;
+        for(i=0; i<n; i++){
+            if(s[i]=='A')a++;
+            else if(s[i]=='L'){
+                if(i <= n-3 && s[i]=='L' && s[i+1]=='L' && s[i+2]=='L'){
+                    late = true;
+                }
+            }
+        }
+        if(a > 1 || late == true)return false;
+        else return true;
+    }
+};
